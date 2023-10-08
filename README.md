@@ -30,4 +30,4 @@ Features
 
 Sources:
 	* RedditP - Made by Ubershmekel http://uberpython.wordpress.com/ - https://github.com/ubershmekel/redditp
-
+ 	* e621p - Made by SilentDeath1 https://github.com/SilentDeath1/e621p
