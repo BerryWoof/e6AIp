@@ -68,8 +68,8 @@ window.log = function () {
 
 $(function () {
 
-    $("#subredditUrl").text("Loading a6ai Slideshow");
-    $("#navboxTitle").text("Loading a6ai Slideshow");
+    $("#subredditUrl").text("Loading e6AI Slideshow");
+    $("#navboxTitle").text("Loading e6AI Slideshow");
 
     //Get Query Variables From URL.
 
