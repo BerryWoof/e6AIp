@@ -29,5 +29,5 @@ Features
 * You can save the html file locally and use it, just make sure you add a separator e.g. the question mark in file://path/to/e6AIp/index.html?tags=fox so the browser knows to pick up the right file and get the correct tags.
 
 Sources:
-	* RedditP - Made by Ubershmekel http://uberpython.wordpress.com/ - https://github.com/ubershmekel/redditp
- 	* e621p - Made by SilentDeath1 https://github.com/SilentDeath1/e621p
+* RedditP - Made by Ubershmekel http://uberpython.wordpress.com/ - https://github.com/ubershmekel/redditp
+* e621p - Made by SilentDeath1 https://github.com/SilentDeath1/e621p
