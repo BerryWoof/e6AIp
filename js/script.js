@@ -566,7 +566,7 @@ $(function () {
         $('#navboxTitle').html(photo.title);
         //$('#navboxSubreddit').attr('href', ep.redditBaseUrl + subreddit).html(subreddit);
         $('#navboxLink').attr('href', photo.url).attr('title', photo.title);
-        $('#navboxCommentsLink').attr('href', photo.commentsLink).attr('title', "Comments on e6ai");
+        $('#navboxCommentsLink').attr('href', photo.commentsLink).attr('title', "Comments on e6AI");
 
         toggleNumberButton(activeIndex, false);
         toggleNumberButton(imageIndex, true);
@@ -974,7 +974,7 @@ $(function () {
         // }
         $('#subredditUrl').html("<a href=\' https://www.e6ai.net \'> e6ai.net</a>");
 
-        document.title = "e6aip - " + (e6aipTags ? e6aipTags : "Latest");
+        document.title = "e6AIp - " + (e6aipTags ? e6aipTags : "Latest");
     };
 
 
