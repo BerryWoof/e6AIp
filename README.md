@@ -3,7 +3,7 @@ e6AIp
 
 A full screen E6AI presentation or slide show.
 
-https://berrywoof.github.io/e6aip/
+https://berrywoof.github.io/e6AIp/
 
 Hotkeys
 -------
