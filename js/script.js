@@ -22,13 +22,11 @@ var timeToNextSlide = 6 * 1000;
 var cookieDays = 300;
 
 // These vars are used for AJAX Url.
-var e6aipTags = '';
-var e6aipLimit = 10;
-var e6aipPageNumber = 1;
-var e6aipRating = '';
-
+var e6aipTags;
+var e6aipLimit;
+var e6aipRating;
+var e6aipPageNumber;
 var e6aipDescending = true;
-var e6aipAfterId = 0;
 
 // These variables are used to decide if there is more data from the API.
 var e6aipFailedImageNumber = 0;
@@ -563,7 +561,7 @@ $(function () {
         var photo = ep.photos[imageIndex];
         var subreddit = '/r/' + photo.subreddit;
 
-        $('#navboxTitle').html(photo.title);
+        $('#navboxTitle').html(photo.title + " (" + photo.favCount + " Favs)");
         //$('#navboxSubreddit').attr('href', ep.redditBaseUrl + subreddit).html(subreddit);
         $('#navboxLink').attr('href', photo.url).attr('title', photo.title);
         $('#navboxCommentsLink').attr('href', photo.commentsLink).attr('title', "Comments on e6AI");
@@ -755,17 +753,13 @@ $(function () {
 
         //Checks what the NSFW tag is and sets the image rating
         if(nsfw){
-            e6aipRating = "rating:e";
-            //Leaving out questionable from NSFW -- If Wanting questionable in NSFW uncomment line below
-            //rating = rating+"+rating:q";
+            e6aipRating = "-rating:s";
         }else{
             e6aipRating = "rating:s";
-            //Leading out questinable from SFW -- If Wanting questionable in SFW uncomment line below
-            //rating = rating+"+rating:q";
         }
 
-        var jsonUrl = "https://e6ai.net/posts.json?tags="+e6aipRating+"+"+e6aipTags +"&limit="+ e6aipLimit+`&page=${e6aipAfterId != 0 ? (e6aipDescending ? "b": "a") : ("") }`+e6aipAfterId;
-        //console.log(jsonUrl);
+        var jsonUrl = "https://e6ai.net/posts.json?tags="+e6aipRating+"+"+e6aipTags +"&limit="+ e6aipLimit+"&page="+e6aipPageNumber;
+        console.log(jsonUrl);
         //log(jsonUrl);
         var failedAjax = function (data) {
             alert("Failed ajax, maybe a bad url? Sorry about that :(");
@@ -794,18 +788,6 @@ $(function () {
                     isOver18 = false;
                 }
 
-                //Prime AfterID
-                if(e6aipAfterId === 0) e6aipAfterId = item.id
-
-                if(e6aipDescending){
-                    if(item.id < e6aipAfterId){
-                        e6aipAfterId = item.id
-                    }
-                }else{
-                    if(item.id > e6aipAfterId){
-                        e6aipAfterId = item.id
-                    }
-                }
                 if(item.file.url == null){
                     //Item has been deleted, continue.
                     return
@@ -816,7 +798,8 @@ $(function () {
                     title: item.tags.director,
                     over18: isOver18,
                     subreddit: "",
-                    commentsLink: "https://e6ai.net/post/show/" + item.id
+                    commentsLink: "https://e6ai.net/post/show/" + item.id,
+					favCount: item.fav_count
                 });
             });
 
@@ -859,7 +842,13 @@ $(function () {
                 addNumberButton(numberButton);
             }
             loadingNextImages = false;
-
+			
+			// Increase the page number
+			if (e6aipDescending) {
+				e6aipPageNumber++;
+			} else {
+				e6aipPageNumber--;
+			}
         };
 
         // I still haven't been able to catch jsonp 404 events so the timeout
