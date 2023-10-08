@@ -813,7 +813,7 @@ $(function () {
                 
                 addImageSlide({
                     url: item.file.url,
-                    title: item.tags.artist,
+                    title: item.tags.director,
                     over18: isOver18,
                     subreddit: "",
                     commentsLink: "https://e6ai.net/post/show/" + item.id
